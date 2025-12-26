@@ -8,7 +8,7 @@ CLIENTFLAGS   := -Iclient -Ilinux -Iqcommon -Iref_gl
 SERVERFLAGS   := -Iserver -Ilinux -Iqcommon
 
 # Compile flags
-DEBUGFLAGS    := -Wall -Wextra -g -O0
+DEBUGFLAGS    := -g -O0
 RELEASEFLAGS  := -O3
 
 # Link flags
