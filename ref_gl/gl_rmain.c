@@ -19,6 +19,21 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
 // r_main.c
 #include "gl_local.h"
+#include <ctype.h>
+
+char* strlwr(char* s){
+    if (!s) return NULL;
+    char *p = s;
+    while (*p) {
+        *p = (char)tolower((unsigned char)*p);
+        p++;
+    }
+    return s;
+}
+
+_Bool R_InitWrapper(void *hinstance, void *hWnd){
+    return R_Init(hinstance, hWnd) != 0;
+}
 
 void R_Clear (void);
 
@@ -1648,7 +1663,7 @@ refexport_t GetRefAPI (refimport_t rimp )
 
 	re.DrawStretchRaw = Draw_StretchRaw;
 
-	re.Init = R_Init;
+	re.Init = R_InitWrapper;
 	re.Shutdown = R_Shutdown;
 
 	re.CinematicSetPalette = R_SetPalette;
