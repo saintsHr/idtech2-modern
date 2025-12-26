@@ -25,11 +25,11 @@ extern polydesc_t r_polydesc;
 void R_BuildPolygonFromSurface(msurface_t *fa);
 void R_PolygonCalculateGradients (void);
 
-extern void R_PolyChooseSpanletRoutine( float alpha, qboolean isturbulent );
+extern void R_PolyChooseSpanletRoutine( float alpha, bool isturbulent );
 
 extern vec5_t r_clip_verts[2][MAXWORKINGVERTS+2];
 
-extern void	R_ClipAndDrawPoly( float alpha, qboolean isturbulent, qboolean textured );
+extern void	R_ClipAndDrawPoly( float alpha, bool isturbulent, bool textured );
 
 /*
 ** R_DrawSprite

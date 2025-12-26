@@ -27,7 +27,7 @@ cvar_t	*sw_mipcap;
 cvar_t	*sw_mipscale;
 
 surfcache_t		*d_initial_rover;
-qboolean		d_roverwrapped;
+bool		d_roverwrapped;
 int				d_minmip;
 float			d_scalemip[NUM_MIPS-1];
 
@@ -51,7 +51,7 @@ void D_Patch (void)
 {
 #if id386
 	extern void D_Aff8Patch( void );
-	static qboolean protectset8 = false;
+	static bool protectset8 = false;
 	extern void D_PolysetAff8Start( void );
 
 	if (!protectset8)

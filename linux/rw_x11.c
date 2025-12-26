@@ -36,7 +36,7 @@
 
 /*****************************************************************************/
 
-static qboolean			doShm;
+static bool			doShm;
 static Display			*x_disp;
 static Colormap			x_cmap;
 static Window			x_win;
@@ -52,8 +52,8 @@ static XVisualInfo		*x_visinfo;
 static int				x_shmeventtype;
 //static XShmSegmentInfo	x_shminfo;
 
-static qboolean			oktodraw = false;
-static qboolean			X11_active = false;
+static bool			oktodraw = false;
+static bool			X11_active = false;
 
 int XShmQueryExtension(Display *);
 int XShmGetEventBase(Display *);
@@ -84,7 +84,7 @@ typedef unsigned short PIXEL;
 
 // this is inside the renderer shared lib, so these are called from vid_so
 
-static qboolean        mouse_avail;
+static bool        mouse_avail;
 static int     mouse_buttonstate;
 static int     mouse_oldbuttonstate;
 static int   mouse_x, mouse_y;
@@ -97,7 +97,7 @@ static cvar_t	*_windowed_mouse;
 static cvar_t	*m_filter;
 static cvar_t	*in_mouse;
 
-static qboolean	mlooking;
+static bool	mlooking;
 
 // state struct passed in Init
 static in_state_t	*in_state;
@@ -694,7 +694,7 @@ int SWimp_Init( void *hInstance, void *wndProc )
 ** The necessary width and height parameters are grabbed from
 ** vid.width and vid.height.
 */
-static qboolean SWimp_InitGraphics( qboolean fullscreen )
+static bool SWimp_InitGraphics( bool fullscreen )
 {
 	int pnum, i;
 	XVisualInfo template;
@@ -932,7 +932,7 @@ void SWimp_EndFrame (void)
 /*
 ** SWimp_SetMode
 */
-rserr_t SWimp_SetMode( int *pwidth, int *pheight, int mode, qboolean fullscreen )
+rserr_t SWimp_SetMode( int *pwidth, int *pheight, int mode, bool fullscreen )
 {
 	rserr_t retval = rserr_ok;
 
@@ -1030,7 +1030,7 @@ void SWimp_Shutdown( void )
 /*
 ** SWimp_AppActivate
 */
-void SWimp_AppActivate( qboolean active )
+void SWimp_AppActivate( bool active )
 {
 }
 

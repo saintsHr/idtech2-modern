@@ -132,12 +132,12 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 extern char		*keybindings[256];
 extern	int		key_repeats[256];
 
-extern	int	anykeydown;
+extern int	anykeydown;
 extern char chat_buffer[];
-extern	int chat_bufferlen;
-extern	qboolean	chat_team;
+extern int  chat_bufferlen;
+extern bool chat_team;
 
-void Key_Event (int key, qboolean down, unsigned time);
+void Key_Event (int key, bool down, unsigned time);
 void Key_Init (void);
 void Key_WriteBindings (FILE *f);
 void Key_SetBinding (int keynum, char *binding);

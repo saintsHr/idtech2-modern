@@ -52,7 +52,7 @@ void R_BuildLightMap (void);
 extern	unsigned		blocklights[1024];	// allow some very large lightmaps
 
 float           surfscale;
-qboolean        r_cache_thrash;         // set if surface cache is thrashing
+bool        r_cache_thrash;         // set if surface cache is thrashing
 
 int         sc_size;
 surfcache_t	*sc_rover, *sc_base;
@@ -442,7 +442,7 @@ D_SCAlloc
 surfcache_t     *D_SCAlloc (int width, int size)
 {
 	surfcache_t             *new;
-	qboolean                wrapped_this_time;
+	bool                wrapped_this_time;
 
 	if ((width < 0) || (width > 256))
 		ri.Sys_Error (ERR_FATAL,"D_SCAlloc: bad cache width %d\n", width);

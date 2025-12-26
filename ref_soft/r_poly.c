@@ -51,7 +51,7 @@ vec5_t	r_clip_verts[2][MAXWORKINGVERTS+2];
 
 static int		s_minindex, s_maxindex;
 
-static void R_DrawPoly( qboolean iswater );
+static void R_DrawPoly( bool iswater );
 
 /*
 ** R_DrawSpanletOpaque
@@ -583,7 +583,7 @@ int R_ClipPolyFace (int nump, clipplane_t *pclipplane)
 /*
 ** R_PolygonDrawSpans
 */
-void R_PolygonDrawSpans(espan_t *pspan, qboolean iswater )
+void R_PolygonDrawSpans(espan_t *pspan, bool iswater )
 {
 	int			count;
 	fixed16_t	snext, tnext;
@@ -889,7 +889,7 @@ void R_PolygonScanRightEdge (void)
 /*
 ** R_ClipAndDrawPoly
 */
-void R_ClipAndDrawPoly( float alpha, qboolean isturbulent, qboolean textured )
+void R_ClipAndDrawPoly( float alpha, bool isturbulent, bool textured )
 {
 	emitpoint_t	outverts[MAXWORKINGVERTS+3], *pout;
 	float		*pv;
@@ -1123,7 +1123,7 @@ void R_PolygonCalculateGradients (void)
 **
 ** This should NOT be called externally since it doesn't do clipping!
 */
-static void R_DrawPoly( qboolean iswater )
+static void R_DrawPoly( bool iswater )
 {
 	int			i, nump;
 	float		ymin, ymax;

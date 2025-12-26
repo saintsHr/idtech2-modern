@@ -51,13 +51,13 @@ float		r_aliasuvscale = 1.0;
 int			r_outofsurfaces;
 int			r_outofedges;
 
-qboolean	r_dowarp;
+bool	r_dowarp;
 
 mvertex_t	*r_pcurrentvertbase;
 
 int			c_surf;
 int			r_maxsurfsseen, r_maxedgesseen, r_cnumsurfs;
-qboolean	r_surfsonstack;
+bool	r_surfsonstack;
 int			r_clipflags;
 
 //
@@ -297,7 +297,7 @@ void R_UnRegister (void)
 R_Init
 ===============
 */
-qboolean R_Init( void *hInstance, void *wndProc )
+bool R_Init( void *hInstance, void *wndProc )
 {
 	R_InitImages ();
 	Mod_Init ();
@@ -512,7 +512,7 @@ R_DrawEntitiesOnList
 void R_DrawEntitiesOnList (void)
 {
 	int			i;
-	qboolean	translucent_entities = false;
+	bool	translucent_entities = false;
 
 	if (!r_drawentities->value)
 		return;
@@ -917,7 +917,7 @@ R_CalcPalette
 */
 void R_CalcPalette (void)
 {
-	static qboolean modified;
+	static bool modified;
 	byte	palette[256][4], *in, *out;
 	int		i, j;
 	float	alpha, one_minus_alpha;

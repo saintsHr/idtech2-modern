@@ -104,7 +104,7 @@ unsigned long R_AliasCheckFrameBBox( daliasframe_t *frame, float worldxf[3][4] )
 	int           i;
 	vec3_t        mins, maxs;
 	vec3_t        transformed_min, transformed_max;
-	qboolean      zclipped = false, zfullyclipped = true;
+	bool      zclipped = false, zfullyclipped = true;
 	float         minz = 9999.0F;
 
 	/*
@@ -186,7 +186,7 @@ unsigned long R_AliasCheckFrameBBox( daliasframe_t *frame, float worldxf[3][4] )
 	return BBOX_MUST_CLIP_XY;
 }
 
-qboolean R_AliasCheckBBox (void)
+bool R_AliasCheckBBox (void)
 {
 	unsigned long ccodes[2] = { 0, 0 };
 
@@ -842,7 +842,7 @@ void R_AliasProjectAndClipTestFinalVert( finalvert_t *fv )
 R_AliasSetupSkin
 ===============
 */
-static qboolean R_AliasSetupSkin (void)
+static bool R_AliasSetupSkin (void)
 {
 	int				skinnum;
 	image_t			*pskindesc;
