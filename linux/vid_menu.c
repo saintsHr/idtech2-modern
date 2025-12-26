@@ -1,5 +1,6 @@
 #include "../client/client.h"
 #include "../client/qmenu.h"
+#include <strings.h>
 
 #define REF_SOFT	0
 #define REF_SOFTX11	1
@@ -82,8 +83,8 @@ static void BrightnessCallback( void *s )
 	else
 		s_brightness_slider[0].curvalue = s_brightness_slider[1].curvalue;
 
-	if ( stricmp( vid_ref->string, "soft" ) == 0 ||
-		 stricmp( vid_ref->string, "softx" ) == 0 )
+	if ( strcasecmp( vid_ref->string, "soft" ) == 0 ||
+		 strcasecmp( vid_ref->string, "softx" ) == 0 )
 	{
 		float gamma = ( 0.8 - ( slider->curvalue/10.0 - 0.5 ) ) + 0.5;
 

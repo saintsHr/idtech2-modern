@@ -1,3 +1,5 @@
+#define _GNU_SOURCE
+
 #include <sys/types.h>
 #include <errno.h>
 #include <stdio.h>
@@ -6,6 +8,7 @@
 #include <unistd.h>
 #include <sys/mman.h>
 #include <sys/time.h>
+#include <ctype.h>
 
 #include "../linux/glob.h"
 
@@ -49,7 +52,8 @@ int Hunk_End (void)
 {
 	byte *n;
 
-	n = mremap(membase, maxhunksize, curhunksize + sizeof(int), 0);
+	//n = mremap(membase, maxhunksize, curhunksize + sizeof(int), 0);
+	n = mremap(membase, maxhunksize, curhunksize + sizeof(int), MREMAP_MAYMOVE);
 	if (n != membase)
 		Sys_Error("Hunk_End:  Could not remap virtual block (%d)", errno);
 	*((int *)membase) = curhunksize + sizeof(int);

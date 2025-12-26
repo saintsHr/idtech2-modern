@@ -23,6 +23,7 @@
 #include <string.h>
 #include <sys/ipc.h>
 #include <sys/shm.h>
+#include <sys/mman.h>
 
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>

@@ -12,8 +12,8 @@ DEBUGFLAGS    := -g -O0
 RELEASEFLAGS  := -O3
 
 # Link flags
-CLIENTLDFLAGS := -lGL -lGLU -lm
-SERVERLDFLAGS := -lm
+CLIENTLDFLAGS := -lGL -lGLU -lX11 -lXext -lm
+SERVERLDFLAGS := -lX11 -lXext -lm
 
 #==============================================================================#
 # Source files
@@ -22,7 +22,7 @@ CLIENTSRC := $(shell find client   -name "*.c")
 SERVERSRC := $(shell find server   -name "*.c")
 COMMONSRC := $(shell find qcommon  -name "*.c")
 GLSRC     := $(shell find ref_gl   -name "*.c")
-LINUXSRC  := $(shell find linux    -name "*.c")
+LINUXSRC  := $(shell find linux -name "*.c" ! -name "rw_in_svgalib.c" ! -name "rw_svgalib.c" ! -name "gl_fxmesa.c")
 
 # Object files
 CLIENTOBJ := $(CLIENTSRC:client/%.c=build/client/%.o)
@@ -45,11 +45,11 @@ release: client
 #==============================================================================#
 client: $(CLIENTOBJ) $(COMMONOBJ) $(GLOBJ) $(LINUXOBJ)
 	@mkdir -p bin
-	$(CC) $^ -o bin/client $(CLIENTLDFLAGS)
+	$(CC) $(CLIENTOBJ) $(COMMONOBJ) $(GLOBJ) $(LINUXOBJ) -o bin/client $(CLIENTLDFLAGS)
 
 server: $(SERVEROBJ) $(COMMONOBJ) $(LINUXOBJ)
 	@mkdir -p bin
-	$(CC) $^ -o bin/server $(SERVERLDFLAGS)
+	$(CC) $(SERVEROBJ) $(COMMONOBJ) $(LINUXOBJ) -o bin/server $(SERVERLDFLAGS)
 
 clean:
 	rm -rf bin
@@ -77,5 +77,3 @@ build/qcommon/%.o: qcommon/%.c
 build/linux/%.o: linux/%.c
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -Ilinux -c $< -o $@
-
-#==============================================================================#
